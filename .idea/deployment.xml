@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="138.68.68.130">
+    <serverData>
+      <paths name="138.68.68.130">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/home/renee.saks/public/phpstorm" local="$PROJECT_DIR$" web="/~renee.saks/phpstorm" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>

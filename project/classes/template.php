@@ -18,6 +18,12 @@ class template
     var $content = false; // template content - now is empty
 
     // class methods
+    //constructor
+    function __construct($f) {
+        $this->file = $f;
+        $this->loadFile();
+    }
+
     function loadFile() {
         $f = $this->file; // use file name variable
         // if problems occur with tmpl directory

@@ -64,4 +64,14 @@ class template
         $this->vars[$name] = $val;
     }
 
+    // parse template content and replace template table names by
+    // template table real values
+    function parse() {
+        $str = $this->content;
+        foreach ($this->vars as $name=>$val) {
+            $str = str_replace('{'.$name.'}', $val, $str);
+        }
+        // return template content with real values
+        return $str;
+    }
 }

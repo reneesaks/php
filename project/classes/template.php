@@ -52,7 +52,16 @@ class template
         }
     }
 
+    // read the file
     function readFile($f) {
         $this->content = file_get_contents($f);
     }
+
+    // set up html elements and their real values
+    // $name - template element name
+    // $val - real element name
+    function set($name, $val) {
+        $this->vars[$name] = $val;
+    }
+
 }

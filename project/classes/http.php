@@ -16,7 +16,7 @@ class http
     // class methods
     // construct
     // object creation and initialization via init() and initConst() methods
-    function _construct() {
+    function __construct() {
         $this->init();
         $this->initConst();
     }
@@ -36,5 +36,9 @@ class http
                 define($var, $this->server[$var]);
             }
         }
+    }
+    // set up data for http object - pairs element name => element value
+    function set($name, $val) {
+        $this->vars[$name] = $val;
     }
 }

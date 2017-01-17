@@ -47,4 +47,12 @@ echo REMOTE_ADDR.'<br/>';
 echo PHP_SELF.'<br/>';
 echo SCRIPT_NAME.'<br/>';
 echo HTTP_HOST.'<br/>';
+echo '<hr/>';
+// create http data pairs and set up into $http-> vars array
+$http->set('Kasutaja', 'Renee');
+$http->set('Tund', 'Programmeerimisvahendid');
+// control $http-> vars object output
+echo '<pre>';
+print_r($http->vars);
+echo '</pre>';
 ?>

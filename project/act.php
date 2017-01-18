@@ -7,5 +7,6 @@
  */
 // get act element value from url
 $act = $http->get('act');
-echo 'act value = '.$act.'<br/>';
+// define act file path according to the act element value
+$fn =
 ?>

@@ -10,6 +10,7 @@
 define('CLASSES_DIR', 'classes/');
 define('TMPL_DIR', 'tmpl/');
 define('STYLE_DIR', 'css/');
+define('ACTS_DIR', 'acts/');
 require_once CLASSES_DIR.'template.php';
 // and use it
 // create an template object,
@@ -59,10 +60,13 @@ print_r($http->vars);
 echo '</pre>';*/
 // control link creation
 $link = $http->getLink(array('kasutaja'=>'anna', 'parool'=>'qwerty'));
-// control http output
+/*// control http output
 echo '<pre>';
 print_r($http);
 echo '</pre>';
 // control element value by name
-echo $http->get('act');
+echo $http->get('act');*/
+//
+// import actions and check em
+require_once 'act.php';
 ?>

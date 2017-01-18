@@ -1,27 +1,21 @@
 <!doctype html>
-<html>
+<!DOCTYPE html>
+<!-- /tmpl/main.html - main template of page-->
+<html lang="en">
 <head>
-    <title>{title}</title>
-    <!--<meta charset="utf-8"/>-->
-    <link rel="stylesheet" type="text/css" href="{style}"/>
+    <meta charset="UTF-8">
+    <title>{header}</title>
 </head>
 <body>
-<div id="container">
-    <div id="header">
-        {title}
-    </div>
-    <div id="navigatsion">
-        <ul class="nav_menu">
-            <li>{nav_bar}</li>
-            <li>{lang}</li>
-        </ul>
-    </div>
-    <div id="menu">{menu}</div>
-    <div id="content">{content}</div>
-    <div id="clear"></div>
-    <div id="footer">
-        &copy; Tartu Kutsehariduskeskus 2017
-    </div>
-</div>
+<table width="90%" border="1">
+    <tr>
+        <td rowspan="2" width="30%">{menu}</td>
+        <td>{nav_bar}</td>
+        <td>{lang_bar}</td>
+    </tr>
+    <tr>
+        <td colspan="2">{content}</td>
+    </tr>
+</table>
 </body>
 </html>

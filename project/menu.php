@@ -14,7 +14,7 @@ $item = new template('menu.item');
 // menu item creation - begin
 // add pairs of item temlate element names and real values
 $item->set('name', 'Esimene leht');
-$link = $http->getLink(array('page'=>'first'));
+$link = $http->getLink(array('act'=>'first'));
 $item->set('link', $link);
 // control created item output
 /*echo '<pre>';
@@ -27,7 +27,7 @@ $menu->set('items', $item->parse());
 // menu item creation - begin
 // add pairs of item temlate element names and real values
 $item->set('name', 'Teine leht');
-$link = $http->getLink(array('page'=>'second'));
+$link = $http->getLink(array('act'=>'second'));
 $item->set('link', $link);
 // control created item output
 /*echo '<pre>';

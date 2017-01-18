@@ -11,13 +11,13 @@ define('CLASSES_DIR', 'classes/');
 define('TMPL_DIR', 'tmpl/');
 define('STYLE_DIR', 'css/');
 require_once CLASSES_DIR.'template.php';
-
 // and use it
-// create an empty template object
+// create an template object,
+// set up the file name for template
+// load template file content
 $tmpl = new template('main');
-
-$tmpl->set('style', STYLE_DIR.'style.css');
-
+// add pairs of temlate element names and real values
+$tmpl->set('style', STYLE_DIR.'main'.'.css');
 $tmpl->set('header', 'minu lehe pealkiri');
 // import http class
 require_once CLASSES_DIR.'http.php';
@@ -25,23 +25,25 @@ require_once CLASSES_DIR.'http.php';
 require_once CLASSES_DIR.'linkobject.php';
 // create and output http object from linkobject class
 $http = new linkobject();
-// control menu
+// create and output menu
 // import menu file
-require_once 'menu.php';
-
-// add pairs of template element names and real values
-$tmpl->set('title', 'my site title');
+require_once 'menu.php'; // in this file is menu creation
 $tmpl->set('menu', $menu->parse());
-$tmpl->set('nav_bar', 'my nav');
-$tmpl->set('lang', 'my language switcher');
-$tmpl->set('content', 'my content');
-
-echo $tmpl->parse();
-
-// control http object output
+$tmpl->set('nav_bar', 'minu navigatsioon');
+$tmpl->set('lang_bar', 'minu keeleriba');
+$tmpl->set('content', 'minu sisu');
+/*
+// control the content of template object
 echo '<pre>';
-print_r($http);
+print_r($tmpl);
 echo '</pre>';
+*/
+// output template content set up with real values
+echo $tmpl->parse();
+// control http object output
+/*echo '<pre>';
+print_r($http);
+echo '</pre>';*/
 // control http constants
 echo REMOTE_ADDR.'<br />';
 echo PHP_SELF.'<br />';
@@ -49,14 +51,15 @@ echo SCRIPT_NAME.'<br />';
 echo HTTP_HOST.'<br />';
 echo '<hr />';
 // create http data pairs and set up into $http->vars array
-$http->set('kasutaja', 'renee');
+$http->set('kasutaja', 'Anna');
 $http->set('tund', 'php programmeerimisvahendid');
 // control $http->vars object output
-echo '<pre>';
+/*echo '<pre>';
 print_r($http->vars);
-echo '</pre>';
+echo '</pre>';*/
 // control link creation
-$link = $http->getLink(array('kasutaja' => 'renee', 'parool' => 'qwerty'));
-echo $link;
-
+$link = $http->getLink(array('kasutaja'=>'anna', 'parool'=>'qwerty'));
+echo '<pre>';
+//print_r($http->vars);
+echo '</pre>';
 ?>

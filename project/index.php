@@ -63,5 +63,6 @@ $link = $http->getLink(array('kasutaja'=>'anna', 'parool'=>'qwerty'));
 echo '<pre>';
 print_r($http);
 echo '</pre>';
+// control element value by name
 echo $http->get('act');
 ?>

@@ -72,6 +72,15 @@ class template
         $this->vars[$name] = $val;
     }
 
+    // add to html template another real value
+    function add($name, $val) {
+        if(!isset($this->vars[$name])) {
+            $this->set($name, $val);
+        } else {
+            $this->vars[$name] .= $val;
+        }
+    }
+
     // parse template content and replace template table names by
     // template table real values
     function parse() {

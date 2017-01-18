@@ -18,27 +18,26 @@ $tmpl = new template('main');
 
 $tmpl->set('style', STYLE_DIR.'style.css');
 
-// add pairs of template element names and real values
-$tmpl->set('title', 'my site title');
-$tmpl->set('menu', 'my menu');
-$tmpl->set('nav_bar', 'my nav');
-$tmpl->set('lang', 'my language switcher');
-$tmpl->set('content', 'my content');
-
-/*
-// control the content of template object
-echo '<pre>';
-print_r($tmpl);
-echo '</pre>';
-*/
-
-echo $tmpl->parse();
+$tmpl->set('header', 'minu lehe pealkiri');
 // import http class
 require_once CLASSES_DIR.'http.php';
 // import linkobject class
 require_once CLASSES_DIR.'linkobject.php';
 // create and output http object from linkobject class
 $http = new linkobject();
+// control menu
+// import menu file
+require_once 'menu.php';
+
+// add pairs of template element names and real values
+$tmpl->set('title', 'my site title');
+$tmpl->set('menu', $menu->parse());
+$tmpl->set('nav_bar', 'my nav');
+$tmpl->set('lang', 'my language switcher');
+$tmpl->set('content', 'my content');
+
+echo $tmpl->parse();
+
 // control http object output
 echo '<pre>';
 print_r($http);
@@ -59,7 +58,5 @@ echo '</pre>';
 // control link creation
 $link = $http->getLink(array('kasutaja' => 'renee', 'parool' => 'qwerty'));
 echo $link;
-// control menu
-// import menu file
-require_once 'menu.php';
+
 ?>

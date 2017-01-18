@@ -59,4 +59,7 @@ echo '</pre>';
 // control link creation
 $link = $http->getLink(array('kasutaja' => 'renee', 'parool' => 'qwerty'));
 echo $link;
+// control menu
+// import menu file
+require_once 'menu.php';
 ?>

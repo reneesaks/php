@@ -8,4 +8,5 @@
 // menu.php - create page menu
 // create menu template objects
 // for menu and menu items
-$menu = new template('menu.menu');
+$menu = new template('menu.menu'); // menu directory is menu/menu.html
+$item = new template('menu.item');

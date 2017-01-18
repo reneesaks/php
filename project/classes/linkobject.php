@@ -31,9 +31,15 @@ class linkobject extends http
         $this->baseUrl = $this->protocol.HTTP_HOST.SCRIPT_NAME;
     }
     // create http data pairs and merge them
-    function addToLink($link, $name, $val) {
+    // merge is realized by &$link
+    function addToLink(&$link, $name, $val) {
+        // if link is not empty - pair is created
+        if($link != '') {
+            // $link = $link.$this->delim;
+            $link .= $this->delim;
+        }
         // create pair: elemen_name=element_value
         $link = $link.fixUrl($name).$this->eq.fixUrl($val);
-        echo $link;
+        // echo $link.'<br/>';
     }
 }

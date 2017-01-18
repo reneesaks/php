@@ -48,7 +48,15 @@ class http
         $this->vars[$name] = $val;
     }
     // get element_value according to the element_name
-    function get($name) {
-
+    function get($name, $fix = true) {
+        // if element with such name exists
+        if(isset($this->vars[$name])) {
+            if($fix) {
+                return fixHtml($this->vars[$name]);
+            }
+            return $this->vars[$name];
+        }
+        // if element doesnt exist
+        return false;
     }
 }

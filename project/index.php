@@ -11,7 +11,7 @@ define('CLASSES_DIR', 'classes/');
 define('TMPL_DIR', 'tmpl/');
 define('STYLE_DIR', 'css/');
 define('ACTS_DIR', 'acts/');
-define('DEFAULT', 'default');
+define('DEFAULT_ACT', 'default');
 require_once CLASSES_DIR.'template.php'; // default act name
 // and use it
 // create an template object,

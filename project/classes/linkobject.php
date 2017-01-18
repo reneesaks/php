@@ -42,4 +42,18 @@ class linkobject extends http
         $link = $link.fixUrl($name).$this->eq.fixUrl($val);
         // echo $link.'<br/>';
     }
+    // merge baseUrl and link with data pairs
+    function getLink($add = array()) {
+        $link = '';
+        foreach ($add as $name=> $val) {
+            $this->addToLink($link, $name, $val);
+        }
+        // check if link is not empty - pairs are cretated
+        if($link != '') {
+            $link = $this->baseUrl.'?'.$link; // http://IP/path_to_scrpt.php?name=value
+        } else {
+            $link = $this->baseUrl;
+        }
+        return $link; // return created link to base program
+    }
 }

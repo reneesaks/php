@@ -35,17 +35,29 @@ class mysql
 		}
 	}
 
-	// query to database
+	// query to database (returns object)
 	function query($sql){
 		$res = mysqli_query($this->conn, $sql); // query result
 		if($res === FALSE){
-			echo 'Viga päringus '.'<b>'.$sql.'</b><br />';
-			echo mysqli_error($this->conn).'<br />';
+			echo 'Viga päringus '.'<b>'.$sql.'</b><br/>';
+			echo mysqli_error($this->conn).'<br/>';
 			exit;
 		}
 		return $res;
 	}
 
+	// query with data results
+    function getArray($sql) {
+	    $res = $this->query($sql);
+	    $data = array();
+	    while($record = mysqli_fetch_assoc($res)) {
+	        $data[] = $record;
+        }
+	    if(count($data) == 0) {
+	        return false;
+        }
+        return $data;
+    }
 }
 
 ?>

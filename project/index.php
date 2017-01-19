@@ -31,4 +31,10 @@ echo $tmpl->parse();
 // control actions
 // import act file
 require_once 'act.php';
+// create connection to database server
+$db->connect();
+// control database object
+echo '<pre>';
+print_r($db);
+echo '</pre>';
 ?>

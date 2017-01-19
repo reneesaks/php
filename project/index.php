@@ -34,7 +34,7 @@ require_once 'act.php';
 // control database object
 // create test query
 $sql = 'SELECT NOW();';
-$res = $db->query($sql);
+$res = $db->getArray($sql);
 // control database query result
 echo '<pre>';
 print_r($res);

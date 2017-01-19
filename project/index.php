@@ -39,4 +39,9 @@ $res = $db->getArray($sql);
 echo '<pre>';
 print_r($res);
 echo '</pre>';
+// control time
+echo '<pre>';
+print_r($db->history);
+echo '</pre>';
+
 ?>

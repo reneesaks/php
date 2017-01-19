@@ -16,5 +16,8 @@ require_once CLASSES_DIR.'template.php'; // import template class
 require_once CLASSES_DIR.'http.php'; // import http class
 require_once CLASSES_DIR.'linkobject.php'; // import linkobject class
 
+require_once CLASSES_DIR.'mysql.php'; // import database class
+
 $http = new linkobject(); // create http object from linkobject class
+$db = new mysql('localhost', 'user', 'parool', 'dbname'); // create database object
 ?>

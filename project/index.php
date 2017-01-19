@@ -31,10 +31,12 @@ echo $tmpl->parse();
 // control actions
 // import act file
 require_once 'act.php';
-// create connection to database server
-$db->connect();
 // control database object
+// create test query
+$sql = 'SELECT NOW();';
+$res = $db->query($sql);
+// control database query result
 echo '<pre>';
-print_r($db);
+print_r($res);
 echo '</pre>';
 ?>

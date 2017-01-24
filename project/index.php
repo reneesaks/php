@@ -24,7 +24,11 @@ require_once 'menu.php'; // in this file is menu creation
 $tmpl->set('menu', $menu->parse());
 $tmpl->set('nav_bar', 'minu navigatsioon');
 $tmpl->set('lang_bar', 'minu keeleriba');
-$tmpl->set('content', 'minu sisu');
+
+
+// allow to use default act
+$tmpl->set('content', $http->get('content'));
+
 
 // output template content set up with real values
 echo $tmpl->parse();

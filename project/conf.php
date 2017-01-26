@@ -21,7 +21,6 @@ define('ROLE_NONE', 0);
 define('ROLE_ADMIN', 1);
 define('ROLE_USER', 2);
 
-
 require_once CLASSES_DIR.'template.php'; // import template class
 require_once CLASSES_DIR.'http.php'; // import http class
 require_once CLASSES_DIR.'linkobject.php'; // import linkobject class

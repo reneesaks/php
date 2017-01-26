@@ -52,11 +52,37 @@ class session
     } // create session
 
     // delete session
-    function crealSessions() {
+    function clearSessions() {
         $sql = 'DELETE FROM session'.' WHERE '.
             time().' - UNIX_TIMESTAMP(changed) >'.
             $this->timeout;
         $this->db->query($sql);
+    }
+
+    // control session
+    function checkSession() {
+        $this->clearSessions();
+        if($this->sid === false and $this->anonymous) {
+            $this->createSession();
+        }
+        if($this->sid !== false) {
+            // get data about this session
+            $sql = 'SELECT * FROM session WHERE '.
+                'sid='.fixDb($this->sid);
+            $res = $this->db->getArray($sql);
+            if($res == false) {
+                if($this->anonymous) {
+                    $this->createSession();
+                } else {
+                    $this->sid = false;
+                    $this->http->del('sid');
+                }
+                define('ROLE_ID', 0);
+                define('USER_ID', 0);
+            } else {
+                dbg($res);
+            }
+        }
     }
 
 

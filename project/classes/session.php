@@ -21,22 +21,32 @@ class session
         $this->http = &$http;
         $this->db = &$db;
         $this->sid = $http->get('sid');
-        $this->createSession();
+        $this->checkSession();
     }// construct
 
+    // set up anonymous
+    function setAnonymous($bool) {
+        $this->anonymous = $bool;
+    } // set anon
+
+    // set up timeout
+    function setTimeout($t) {
+        $this->timeout = $t;
+    } // set timeout
+
     // create session
-    function createSession($user = false) {
+    function createSession($user = false){
         // anonymous session
-        if($user == false) {
+        if($user == false){
             $user = array(
                 'user_id' => 0,
                 'role_id' => 0,
                 'username' => 'Anonymous'
             );
         }
+
         // create session id number
         $sid = md5(uniqid(time().mt_rand(1,1000), true));
-
         // insert data to database
         $sql = 'INSERT INTO session SET '.
             'sid='.fixDb($sid).', '.
@@ -45,33 +55,32 @@ class session
             'login_ip='.fixDb(REMOTE_ADDR).', '.
             'created=NOW()';
         $this->db->query($sql);
-
-        // set up session id number
+        //setup session id number
         $this->sid = $sid;
         $this->http->set('sid', $sid);
-    } // create session
+    }// createSession
 
-    // delete session
-    function clearSessions() {
+    // delete session data from database
+    function clearSessions(){
         $sql = 'DELETE FROM session'.' WHERE '.
-            time().' - UNIX_TIMESTAMP(changed) >'.
+            time().' - UNIX_TIMESTAMP(changed) > '.
             $this->timeout;
         $this->db->query($sql);
-    }
+    }// clearSessions
 
-    // control session
-    function checkSession() {
+    // controll session
+    function checkSession(){
         $this->clearSessions();
-        if($this->sid === false and $this->anonymous) {
+        if($this->sid === false and $this->anonymous){
             $this->createSession();
         }
-        if($this->sid !== false) {
+        if($this->sid !== false){
             // get data about this session
             $sql = 'SELECT * FROM session WHERE '.
                 'sid='.fixDb($this->sid);
             $res = $this->db->getArray($sql);
-            if($res == false) {
-                if($this->anonymous) {
+            if($res == false){
+                if($this->anonymous){
                     $this->createSession();
                 } else {
                     $this->sid = false;
@@ -79,9 +88,10 @@ class session
                 }
                 define('ROLE_ID', 0);
                 define('USER_ID', 0);
-            } else {
+            }
+            else{
                 $vars = unserialize($res[0]['svars']);
-                if(!is_array($vars)) {
+                if(!is_array($vars)){
                     $vars = array();
                 }
                 $this->vars = $vars;
@@ -94,20 +104,52 @@ class session
             define('ROLE_ID', 0);
             define('USER_ID', 0);
         }
-    } // check session
+    }// checkSession
 
     // delete session by request
-    function deleteSession() {
-        if($this->sid !== false) {
+    function deleteSession(){
+        if($this->sid !== false){
             $sql = 'DELETE FROM session WHERE '.
-                'sid'.fixDb($this->sid);
+                'sid='.fixDb($this->sid);
             $this->db->query($sql);
             $this->sid = false;
             $this->http->del('sid');
         }
-    } // delete session
+    }// deleteSession
 
-    
+    // set up data for http object - pairs element_name => element value
+    function set($name, $val){
+        $this->vars[$name] = $val;
+    }// set
+
+    // get element_value according to the element_name
+    function get($name){
+        // if element with such name is exists
+        if(isset($this->vars[$name])){
+            return $this->vars[$name];
+        }
+        // if element with such name is not exists
+        return false;
+    }// get
+
+    //delete http data element
+    function del($name){
+        if(isset($this->vars[$name])){
+            unset($this->vars[$name]);
+        }
+    }// del
+
+    //update session data
+    function flush(){
+        if($this->sid !== false){
+            $sql = 'UPDATE session SET changed=NOW(), '.
+                'svars='.fixDb(serialize($this->vars)).
+                ' WHERE sid='.fixDb($this->sid);
+            $this->db->query($sql);
+        }
+    }
 
 
 }// class end
+
+?>

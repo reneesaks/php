@@ -44,5 +44,6 @@ $res = $db->getArray($sql);
 require_once 'dbg.php';
 dbg($res);
 dbg($db->showHistory());
-
+// control session
+dbg($sess);
 ?>

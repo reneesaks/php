@@ -22,6 +22,8 @@ class linkobject extends http
     var $protocol = 'http://'; // protocol for url http
     var $delim = '&amp;'; // & html tag name1=value1&name2=value2
     var $eq = '='; // = for url element pair element_name = element_value
+    // add if exists
+    var $aie = array('sid'=>'sid');
 
     // class methods
     // construct

@@ -49,5 +49,13 @@ class session
         // set up session id number
         $this->sid = $sid;
         $this->http->set('sid', $sid);
+    } // create session
+
+    // delete session
+    function crealSession() {
+        $sql = 'DELETE FROM session'.' WHERE '.
+            time().' - UNIX_TIMESTAMP(changed) >'.
+            $this->timeout;
+        $this->db->query($sql);
     }
 }// class end

@@ -52,10 +52,12 @@ class session
     } // create session
 
     // delete session
-    function crealSession() {
+    function crealSessions() {
         $sql = 'DELETE FROM session'.' WHERE '.
             time().' - UNIX_TIMESTAMP(changed) >'.
             $this->timeout;
         $this->db->query($sql);
     }
+
+
 }// class end

@@ -9,3 +9,9 @@
 function fixDb($val) {
     return '"'.addslashes($val).'"';
 }
+
+function dbg($data) {
+    echo '<pre>';
+    print_r($data);
+    echo '</pre>';
+}

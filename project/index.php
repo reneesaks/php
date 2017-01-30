@@ -43,6 +43,7 @@ $res = $db->getArray($sql);
 // control database query result
 require_once 'dbg.php';
 dbg($res);
+$sess->flush();
 dbg($db->showHistory());
 // control session
 dbg($sess);

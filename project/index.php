@@ -24,10 +24,10 @@ require_once 'menu.php'; // in this file is menu creation
 $tmpl->set('menu', $menu->parse());
 $tmpl->set('nav_bar', $sess->user_data['username']);
 $tmpl->set('lang_bar', 'minu keeleriba');
-// $tmpl->set('content', 'minu sisu');
-$tmpl->set('content', $http->get('content'));
+// $tmpl->set('content', $http->get('content'));
 
 // output template content set up with real values
+require_once 'act.php';
 echo $tmpl->parse();
 // control actions
 // import act file

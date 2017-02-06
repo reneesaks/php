@@ -8,12 +8,11 @@
  */
 // import conf.php
 require_once 'conf.php';
-
 // create an template object,
 // set up the file name for template
 // load template file content
 $tmpl = new template('main');
-
+require_once 'act.php';
 // add pairs of temlate element names and real values
 $tmpl->set('style', STYLE_DIR.'main'.'.css');
 $tmpl->set('header', 'minu lehe pealkiri');
@@ -27,11 +26,8 @@ $tmpl->set('lang_bar', 'minu keeleriba');
 // $tmpl->set('content', $http->get('content'));
 
 // output template content set up with real values
-require_once 'act.php';
 echo $tmpl->parse();
 // control actions
-// import act file
-require_once 'act.php';
 // control database object
 // create test query
 $sql = 'SELECT NOW();';

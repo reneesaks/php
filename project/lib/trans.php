@@ -15,7 +15,7 @@ function tr($txt) {
     }
 
     // if lang file not found, find it
-    if($transe === false) {
+    if($trans === false) {
         $fn = LANG_DIR.'lang'.LANG_ID.'php';
         if(file_exists($fn) and is_file($fn) and is_readable($fn)) {
             require_once($fn);

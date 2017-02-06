@@ -8,7 +8,10 @@
  */
 // import conf.php
 require_once 'conf.php';
+// load temlate content
 $tmpl = new template('main');
+// require language
+require_once(BASE_DIR.'lang.php');
 // add pairs of temlate element names and real values
 $tmpl->set('style', STYLE_DIR.'main'.'.css');
 $tmpl->set('header', 'minu lehe pealkiri');

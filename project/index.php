@@ -9,7 +9,7 @@
 // import conf.php
 require_once 'conf.php';
 // load temlate content
-$tmpl = new template('main');
+$tmpl = new Template('main');
 // require language
 require_once 'lang.php';
 // add pairs of temlate element names and real values

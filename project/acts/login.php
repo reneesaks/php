@@ -11,7 +11,7 @@ $form = new Template('login');
 $form->set('error', $sess->get('login_error'));
 $sess->del('login_error');
 
-$form->set('submit', 'Logi sisse');
+$form->set('submit', 'logi sisse');
 $form->set('username_str', 'kasutajanimi');
 $form->set('password_str', 'parool');
 

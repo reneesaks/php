@@ -12,6 +12,7 @@ define('STYLE_DIR', 'css/'); // styles path
 define('ACTS_DIR', 'acts/'); // acts path
 define('DEFAULT_ACT', 'default'); // default act file name
 define('LIB_DIR', 'lib/'); // lib path
+define('LANG_DIR', 'lang/'); // lang path
 
 // import useful functions
 require_once LIB_DIR.'utils.php';

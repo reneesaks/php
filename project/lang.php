@@ -21,7 +21,7 @@ foreach($siteLangs as $lang_id => $lang_name) {
         array('act', 'page_id'), array('lang_id'));
     $item->set('link', $link);
     $item->set('name', $lang_name);
-    $add->add('lang_bar', $item->parse());
+    $tmpl->add('lang_bar', $item->parse());
 
     if($count < count($siteLangs)) {
         $tmpl->add('lang_bar', $sep);

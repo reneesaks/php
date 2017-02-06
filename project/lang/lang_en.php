@@ -7,14 +7,15 @@
  */
 
 $_trans = array(
-    'Esimene' => 'First',
-    'Teine' => 'Second',
-    'Minu lehe pealkiri' => 'My page heading',
-    'Logi välja' => 'Logout',
-    'Kasutajanimi' => 'Username',
-    'Parool' => 'Password',
-    'Logi sisse' => 'Login',
-    'Viga sisselogimisel' => 'Login error',
+    'esimene' => 'First',
+    'teine' => 'Second',
+    'kolmas' => 'Third',
+    'minu lehe pealkiri' => 'My page heading',
+    'logi välja' => 'Logout',
+    'kasutajanimi' => 'Username',
+    'karool' => 'Password',
+    'logi sisse' => 'Login',
+    'viga sisselogimisel' => 'Login error'
 );
 
 ?>

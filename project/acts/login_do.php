@@ -16,14 +16,15 @@ $sql = 'SELECT * FROM user WHERE '.
 $res = $db->getArray($sql);
 
 if($res === false) {
-    $sess->set('login_error', 'Viga sisselogimisel');
+    $sess->set('login_error', 'viga sisselogimisel');
 
     $link = $http->getLink(array('act'=>'login'), array('username'));
     $http->redirect($link);
 } else {
-    $sess->createSession();
-    $tmpl->set('nav_bar', 'Sisselogimine õnnestus!');
+    $sess->createSession($res[0]);
+    $tmpl->set('nav_bar', 'sisselogimine õnnestus!');
     print_r($res);
+    $http->redirect();
 }
 
 ?>

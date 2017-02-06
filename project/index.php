@@ -8,11 +8,7 @@
  */
 // import conf.php
 require_once 'conf.php';
-// create an template object,
-// set up the file name for template
-// load template file content
 $tmpl = new template('main');
-require_once 'act.php';
 // add pairs of temlate element names and real values
 $tmpl->set('style', STYLE_DIR.'main'.'.css');
 $tmpl->set('header', 'minu lehe pealkiri');
@@ -21,10 +17,9 @@ $tmpl->set('header', 'minu lehe pealkiri');
 // import menu file
 require_once 'menu.php'; // in this file is menu creation
 $tmpl->set('menu', $menu->parse());
+require_once 'act.php';
 $tmpl->set('nav_bar', $sess->user_data['username']);
-$tmpl->set('lang_bar', 'minu keeleriba');
-// $tmpl->set('content', $http->get('content'));
-
+$tmpl->set('lang_bar', LANG_ID);
 // output template content set up with real values
 echo $tmpl->parse();
 // control actions
